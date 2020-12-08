@@ -4,7 +4,7 @@
 #Get filename from url
 #Get installed version number
 #Get version number. eg. if version number = 0.0.116, output 116
-#Set gui dialog. Prioritises in order of kidalog, zenity, dialog
+#Set gui dialog. Prioritises in order of kdialog, zenity, dialog
 URL=$(curl -L --head https://discord.com/api/download/canary\?platform\=linux\&format\=tar.gz 2>/dev/null | grep location: | tail -n1 | cut -d' ' -f2 | tr -d '\r')
 FILENAME=$(basename "$URL")
 CURRENTVERSION=$(cat /usr/share/discord-canary/version.txt)
@@ -17,6 +17,7 @@ else
     DIALOG=dialog
 fi
 
+#If discord-canary isntalled, check for updates. if not,  check for updates.
 if [ ! -d "/usr/share/discord-canary/" ] ;then
     if ! "$DIALOG" --title "Discord Canary Manager" --yesno "Discord Canary is not installed\nInstall it now?" 20 60; then exit ; fi
     PASSWD=$("$DIALOG" --title "Discord Canary Manager" --password "Password required to continue" 20 60)
