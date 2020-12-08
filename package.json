@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "discord-rpc": "^3.1.4",
-    "register-scheme": "github:devsnek/node-register-scheme"
-  }
-}
